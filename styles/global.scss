@@ -1,0 +1,447 @@
+$color_1: aliceblue;
+$color_2: beige;
+$color_3: #090909;
+$color_4: #f5c518;
+$font-family_1: "Jura", sans-serif;
+$background-color_1: #0a0e31;
+$background-color_2: #1a1a1a;
+$background-color_3: #090909;
+$background-color_4: #f5c518;
+$background-color_5: beige;
+$background-color_6: rgba(9, 9, 9, 0.4039215686);
+$background-color_7: #16181B;
+
+@import "https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap";
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: $font-family_1;
+}
+
+body {
+    background-color: $background-color_1;
+    color: $color_1;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: $background-color_2;
+    color: $color_2;
+    font-size: large;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1% 0;
+    width: 100%;
+
+    a {
+        text-decoration: none;
+        color: $color_2;
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 22px;
+        cursor: pointer;
+
+        &:hover {
+            + {
+                .fixed-hover-div {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    select {
+        cursor: pointer;
+        outline: 0;
+        border: 0;
+        width: 5%;
+        height: 35px;
+        font-size: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.151);
+        border-radius: 5px;
+        background-color: $background-color_1;
+        color: $color_1;
+    }
+
+    option {
+        cursor: pointer;
+    }
+
+    .fixed-hover-div {
+        position: fixed;
+        background-color: $background-color_3;
+        opacity: 0;
+        transition: 0.3s ease;
+        z-index: 10;
+        padding: 1% 1%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        p {
+            cursor: pointer;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .search-input {
+        width: 120%;
+        height: 24px;
+        outline: 0;
+        border-radius: 2px;
+        border: 0;
+        font-size: 16px;
+    }
+
+    .l-random-film {
+        width: 200px;
+        height: 50px;
+        font-size: 18px;
+        background-color: $background-color_3;
+        color: $color_1;
+        border: 0;
+        border-radius: 5px;
+
+        span {
+            color: $color_2;
+            font-weight: 700;
+        }
+    }
+
+    .l-saved-button {
+        font-size: 18px;
+        background-color: $background-color_3;
+        color: $color_1;
+        border: 0;
+        border-radius: 5px;
+        width: 140px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .search-results {
+        position: absolute;
+        z-index: 2;
+        background-color: $background-color_2;
+        width: 400px;
+
+        .search-item-result {
+            display: flex;
+            gap: 3%;
+            cursor: pointer;
+            margin-bottom: 10px;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                padding-top: 7%;
+            }
+        }
+
+        .open-all-link {
+            background-color: $background-color_3;
+            width: 100%;
+            display: block;
+        }
+
+        img {
+            width: 100px;
+        }
+    }
+}
+
+.actual-movie-card {
+    width: 220px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+
+    h2 {
+        font-size: 22px;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .rating {
+        background-color: $background-color_4;
+        color: $color_3;
+        width: 30px;
+        padding: 2% 5%;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 19px;
+        position: absolute;
+    }
+}
+
+section {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 40px auto;
+
+    h1 {
+        position: relative;
+        left: 22px;
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    .actual-movies {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        gap: 2%;
+        margin-top: 20px;
+    }
+}
+
+.add-to-saved {
+    position: absolute;
+    right: 0;
+    background-color: $background-color_4;
+    color: $color_3;
+    padding: 1% 4%;
+    font-size: 38px;
+}
+
+.movie-info {
+    .add-to-saved {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: $background-color_4;
+        color: $color_3;
+        font-size: 38px;
+        cursor: pointer;
+        width: 20px;
+    }
+}
+
+.add-to-saved-active {
+    background-color: $background-color_3 !important;
+    color: $color_4 !important;
+}
+
+.modal-film-info {
+    position: fixed;
+    width: 550px;
+    height: 700px;
+    z-index: 11;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $background-color_2;
+    border-radius: 20px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.734);
+    overflow-y: auto;
+
+    .movie-info {
+        display: flex;
+        padding: 2% 2%;
+        position: relative;
+
+        img {
+            width: 250px;
+            height: 400px;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+
+        div {
+            padding: 5% 0 0 5%;
+            position: relative;
+        }
+
+        .bio {
+            margin-top: 30px;
+        }
+
+        .l-modal-title {
+            color: $color_2;
+        }
+    }
+
+    .modal-close {
+        position: absolute;
+        z-index: 10;
+        right: 15px;
+        cursor: pointer;
+        top: 5px;
+    }
+
+    .comments {
+        padding: 3% 0 0 5%;
+
+        .add-comment {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            input {
+                width: 40%;
+                height: 20px;
+                font-size: 18px;
+                background-color: $background-color_1;
+                color: $color_1;
+                outline: 0;
+            }
+
+            textarea {
+                width: 94%;
+                font-size: 18px;
+                height: 100px;
+                background-color: $background-color_1;
+                color: $color_1;
+                outline: 0;
+            }
+
+            button {
+                background-color: $background-color_5;
+                height: 35px;
+                border: 0;
+                width: 40%;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.overlay {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: $background-color_6;
+    z-index: 9;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    &:active {
+        background: #8c9098;
+    }
+
+    background: #25282E;
+    border-radius: 9999px;
+    border-width: 1px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: $background-color_7;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+}
+
+#saved-movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    width: 80%;
+    margin-top: 40px;
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        a {
+            display: none;
+        }
+
+        .search-input {
+            width: 150px;
+        }
+    }
+}
+
+@media screen and (max-width: 670px) {
+    header {
+        padding: 5% 0;
+
+        h2 {
+            font-size: 18px;
+        }
+
+        .l-random-film {
+            width: 150px;
+            font-size: 14px;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    header {
+        .l-header-films {
+            display: none;
+        }
+
+        .l-random-film {
+            display: none;
+        }
+
+        .search-results {
+            width: 300px;
+
+            .search-item-result {
+                display: flex;
+                gap: 3%;
+                cursor: pointer;
+                margin-bottom: 10px;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 7%;
+                }
+            }
+        }
+    }
+
+    .modal-film-info {
+        width: 350px;
+        height: 600px;
+
+        .movie-info {
+            img {
+                width: 150px;
+                height: 250px;
+            }
+
+            .bio {
+                margin-top: 10px;
+                font-size: 14px;
+            }
+        }
+    }
+}

@@ -1,0 +1,374 @@
+@import "https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap";
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Jura", sans-serif;
+}
+
+body {
+  background-color: #0a0e31;
+  color: aliceblue;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  background-color: #1a1a1a;
+  color: beige;
+  font-size: large;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1% 0;
+  width: 100%;
+}
+header a {
+  text-decoration: none;
+  color: beige;
+  font-size: 32px;
+}
+header h2 {
+  font-size: 22px;
+  cursor: pointer;
+}
+header h2:hover + .fixed-hover-div {
+  opacity: 1;
+}
+header button {
+  cursor: pointer;
+}
+header select {
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  width: 5%;
+  height: 35px;
+  font-size: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.151);
+  border-radius: 5px;
+  background-color: #0a0e31;
+  color: aliceblue;
+}
+header option {
+  cursor: pointer;
+}
+header .fixed-hover-div {
+  position: fixed;
+  background-color: #090909;
+  opacity: 0;
+  transition: 0.3s ease;
+  z-index: 10;
+  padding: 1% 1%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+header .fixed-hover-div p {
+  cursor: pointer;
+}
+header .fixed-hover-div:hover {
+  opacity: 1;
+}
+header .search-input {
+  width: 120%;
+  height: 24px;
+  outline: 0;
+  border-radius: 2px;
+  border: 0;
+  font-size: 16px;
+}
+header .l-random-film {
+  width: 200px;
+  height: 50px;
+  font-size: 18px;
+  background-color: #090909;
+  color: aliceblue;
+  border: 0;
+  border-radius: 5px;
+}
+header .l-random-film span {
+  color: beige;
+  font-weight: 700;
+}
+header .l-saved-button {
+  font-size: 18px;
+  background-color: #090909;
+  color: aliceblue;
+  border: 0;
+  border-radius: 5px;
+  width: 140px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .search-results {
+  position: absolute;
+  z-index: 2;
+  background-color: #1a1a1a;
+  width: 400px;
+}
+header .search-results .search-item-result {
+  display: flex;
+  gap: 3%;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+header .search-results .search-item-result div {
+  display: flex;
+  flex-direction: column;
+  padding-top: 7%;
+}
+header .search-results .open-all-link {
+  background-color: #090909;
+  width: 100%;
+  display: block;
+}
+header .search-results img {
+  width: 100px;
+}
+
+.actual-movie-card {
+  width: 220px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+}
+.actual-movie-card h2 {
+  font-size: 22px;
+}
+.actual-movie-card img {
+  width: 100%;
+}
+.actual-movie-card .rating {
+  background-color: #f5c518;
+  color: #090909;
+  width: 30px;
+  padding: 2% 5%;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 19px;
+  position: absolute;
+}
+
+section {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 40px auto;
+}
+section h1 {
+  position: relative;
+  left: 22px;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+section .actual-movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2%;
+  margin-top: 20px;
+}
+
+.add-to-saved {
+  position: absolute;
+  right: 0;
+  background-color: #f5c518;
+  color: #090909;
+  padding: 1% 4%;
+  font-size: 38px;
+}
+
+.movie-info .add-to-saved {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #f5c518;
+  color: #090909;
+  font-size: 38px;
+  cursor: pointer;
+  width: 20px;
+}
+
+.add-to-saved-active {
+  background-color: #090909 !important;
+  color: #f5c518 !important;
+}
+
+.modal-film-info {
+  position: fixed;
+  width: 550px;
+  height: 700px;
+  z-index: 11;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1a1a1a;
+  border-radius: 20px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.734);
+  overflow-y: auto;
+}
+.modal-film-info .movie-info {
+  display: flex;
+  padding: 2% 2%;
+  position: relative;
+}
+.modal-film-info .movie-info img {
+  width: 250px;
+  height: 400px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.modal-film-info .movie-info div {
+  padding: 5% 0 0 5%;
+  position: relative;
+}
+.modal-film-info .movie-info .bio {
+  margin-top: 30px;
+}
+.modal-film-info .movie-info .l-modal-title {
+  color: beige;
+}
+.modal-film-info .modal-close {
+  position: absolute;
+  z-index: 10;
+  right: 15px;
+  cursor: pointer;
+  top: 5px;
+}
+.modal-film-info .comments {
+  padding: 3% 0 0 5%;
+}
+.modal-film-info .comments .add-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.modal-film-info .comments .add-comment input {
+  width: 40%;
+  height: 20px;
+  font-size: 18px;
+  background-color: #0a0e31;
+  color: aliceblue;
+  outline: 0;
+}
+.modal-film-info .comments .add-comment textarea {
+  width: 94%;
+  font-size: 18px;
+  height: 100px;
+  background-color: #0a0e31;
+  color: aliceblue;
+  outline: 0;
+}
+.modal-film-info .comments .add-comment button {
+  background-color: beige;
+  height: 35px;
+  border: 0;
+  width: 40%;
+  cursor: pointer;
+}
+
+.overlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(9, 9, 9, 0.4039215686);
+  z-index: 9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #25282E;
+  border-radius: 9999px;
+  border-width: 1px;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #8c9098;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #16181B;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+}
+
+#saved-movies-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  width: 80%;
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 900px) {
+  header a {
+    display: none;
+  }
+  header .search-input {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 670px) {
+  header {
+    padding: 5% 0;
+  }
+  header h2 {
+    font-size: 18px;
+  }
+  header .l-random-film {
+    width: 150px;
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 500px) {
+  header .l-header-films {
+    display: none;
+  }
+  header .l-random-film {
+    display: none;
+  }
+  header .search-results {
+    width: 300px;
+  }
+  header .search-results .search-item-result {
+    display: flex;
+    gap: 3%;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  header .search-results .search-item-result div {
+    display: flex;
+    flex-direction: column;
+    padding-top: 7%;
+  }
+  .modal-film-info {
+    width: 350px;
+    height: 600px;
+  }
+  .modal-film-info .movie-info img {
+    width: 150px;
+    height: 250px;
+  }
+  .modal-film-info .movie-info .bio {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+}/*# sourceMappingURL=global.css.map */

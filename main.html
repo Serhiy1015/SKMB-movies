@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKMB</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="shortcut icon"
+        href="https://play-lh.googleusercontent.com/x6e04XkLxys_hZ0ENmupQXMJ6oIoPAp3lU-3H-V2TT7FIDMX56w4Bk0wefurWU2eduQ"
+        type="image/x-icon">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div>
+                <a href="">SKMB</a>
+            </div>
+            <div class="search">
+                <input type="text" id="search-input" placeholder="Пошук за назвою" class="search-input">
+                <div class="search-results"></div>
+
+            </div>
+            <div>
+                <h2 class="l-header-films">За жанром</h2>
+                <div class="fixed-hover-div">
+                    <p>Драми</p>
+                    <p>Жахи</p>
+                    <p>Комедії</p>
+                    <p>Фантастика</p>
+                    <p>Детективи</p>
+                </div>
+            </div>
+            <button class="l-random-film">Вибрати рандомний фільм з <span>Top 100 IMDB</span></button>
+            <button class="l-saved-button">Збережене</button>
+        </header>
+
+    </div>
+    <section>
+        <h1 class="section-h1">
+            Найактуальніше на даний момент
+        </h1>
+        <div class="actual-movies"></div>
+    </section>
+
+    <div class="modal-film-info">
+
+        <p class="modal-close">&#10005;</p>
+        <div class="movie-info">
+            <img src="" alt="" class="modal-img">
+            <div>
+                <h2 class="l-modal-title"></h2>
+                <p class="l-modal-second-title"></p>
+                <p class="bio"></p>
+            </div>
+        </div>
+        <hr>
+        <div class="comments">
+            <div class="add-comment">
+                <h3>Коментарі</h3>
+                <input type="text" id="comment-name" placeholder="Ваше ім'я">
+                <textarea id="comment-text" placeholder="Поділіться враженнями щодо фільму"></textarea>
+                <button class="add-comment-button">Додати коментар</button>
+            </div>
+
+            <div class="comments-display">
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+    <script src="./scripts/script.js"></script>
+    <!-- <script src="/scripts/search.js" type="module"></script> -->
+</body>
+
+</html>
